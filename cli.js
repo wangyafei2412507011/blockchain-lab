@@ -134,6 +134,11 @@ function initHttpServer(port) {
   app.use(cors());
   app.use(express.json());
 
+  // 新增：适配前端 /chain
+  app.get("/chain", (req, res) => {
+    res.send(blockchain.blockchain);
+  });
+
   app.get("/blocks", (req, res) => {
     res.send(blockchain.blockchain);
   });
